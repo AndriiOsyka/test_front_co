@@ -1,25 +1,34 @@
 <template>
-  <div class="home">
-    {{cityes}}
+  <div class="homeView">
+    <home-weather :cityes="cityes" />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import '../store/index'
+import { mapActions, mapState } from 'vuex'
+import HomeWeather from '../components/HomeWeather.vue'
 export default {
   name: 'HomeView',
+  components: {
+    HomeWeather
+  },
   methods: {
-      ...mapActions(['GET_DATA_FROM_API'])
+      ...mapActions(['getDataFromApi'])
   },
   computed: {
-    cityes: () => {
-      return this.store.state.cityes
-    }
+    ...mapState({
+      cityes: state => state.cityes
+    })
   },
   async created() {
-    await this.GET_DATA_FROM_API();
-    console.log(this.store.state.cityes)
+    await this.getDataFromApi();
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .homeView {
+    display: flex;
+    justify-content: center;
+  }
+</style>

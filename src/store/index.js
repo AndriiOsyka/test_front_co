@@ -1,12 +1,11 @@
 import { createStore } from 'vuex'
-import { getWeather } from '../request/request'
 
 export default createStore({
   state: {
     cityes: [{
       name: "Kiyv",
       longitude: 30.52,
-      latityde: 50.45,
+      latitude: 50.45,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Africa%2FCairo"
@@ -14,7 +13,7 @@ export default createStore({
     {
       name: "London",
       longitude: 51.51,
-      latityde: -0.13,
+      latitude: -0.13,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Europe%2FLondon"
@@ -22,43 +21,48 @@ export default createStore({
     {
       name: "Madrid",
       longitude: 40.42,
-      latityde: -3.70,
+      latitude: -3.70,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Europe%2FBerlin",
     },
     {
-      name: "Canberra",
-      longitude: -35.28,
-      latityde: 149.13,
+      name: "New York",
+      longitude: -5.28,
+      latitude: 56.25,
       minTemp: undefined,
       maxTemp: undefined,
-      timezone: "timezone=Australia%2FSydney"
+      timezone: "America%2FNew_York"
     }],
-    date: undefined
+    date: {
+      start: "2022-12-10",
+      end: "2022-12-10"
+    }
   },
   getters: {
   },
   mutations: {
-    setCityes: (state, data) => {
-      state.cityes.map((city, index) => {
-        if(city.latitude === data[index].latitude && city.longitude === data[index].longitude) {
-          city.minTemp = data[index].daily.temperature_2m_min[0];
-          city.maxTemp = data[index].daily.temperature_2m_max[0];
+    SET_CITYES: (state, data) => {
+      state.cityes.map(city => {
+        if(city.latitude === data.latitude && city.longitude === data.longitude) {
+          city.minTemp = data.daily.temperature_2m_min[0];
+          city.maxTemp = data.daily.temperature_2m_max[0];
         }
       })
     },
   },
   actions: {
-    async GET_DATA_FROM_API ({commit}) {
-      const requests = [];
-      this.state.cityes.forEach(city => {
-        requests.push(getWeather(city, this.state.date))
-      })
-      await Promise.all(requests).then(values => commit('setCityes', values));
-      console.log(requests);
+    // eslint-disable-next-line
+    async getWeatherByCity ({dispatch}, {city}) {
+      console.log(city.latitude)
+      const weather = await((await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&daily=temperature_2m_max,temperature_2m_min&timezone=${city.timezone}&start_date=${this.state.date.start}&end_date=${this.state.date.end}`)).json());
+      console.log(weather);
+      return weather
+    },
+    async getDataFromApi ({ dispatch, commit }) {
+      return await Promise.all(this.state.cityes.map(async (city) => {
+        commit("SET_CITYES", await dispatch("getWeatherByCity", {city: city}));
+      }))
     }
-  },
-  modules: {
   }
 })
