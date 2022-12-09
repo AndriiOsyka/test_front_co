@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{cityes}}
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapActions } from 'vuex'
+import '../store/index'
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
+  methods: {
+      ...mapActions(['GET_DATA_FROM_API'])
+  },
+  computed: {
+    cityes: () => {
+      return this.store.state.cityes
+    }
+  },
+  async created() {
+    await this.GET_DATA_FROM_API();
+    console.log(this.store.state.cityes)
   }
 }
 </script>
