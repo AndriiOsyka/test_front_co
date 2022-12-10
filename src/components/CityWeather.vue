@@ -1,8 +1,8 @@
 <template>
     <div class="cityWeather">
-      <h4>{{city.name}}</h4>
-      <h5>{{city.minTemp}}</h5>
-      <h5>{{city.maxTemp}}</h5>
+      <div>{{city.name}}</div>
+      <div>{{city.minTemp}}</div>
+      <div>{{city.maxTemp}}</div>
       <button @click="deleteCity" class="btnDelete"><font-awesome-icon icon="fa-solid fa-trash" /></button>
     </div>
   </template>
@@ -34,36 +34,42 @@
   
   <style lang="scss" scoped>
     .cityWeather {
-      display: flex;
+      display: grid;
+      grid-template-columns: 30% 35% 35%;
       position: relative;
-      h4 {
-        width: 20%;
-        margin: 0;
-        padding: 20px 0;
+      border-radius: 5px;
+      border: 1px solid #42336a;
+      background: #eeebf7;
+      margin: 0 0 10px;
+      padding: 10px 0;
+      transition: all .3s;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.15);
+        .btnDelete {
+          display: block;
+        }
       }
-      h5 {
-        width: 40%;
-        border-left: 2px solid red;
-        margin: 0;
-        padding: 20px 0;
+      div {
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #242225;
       }
       .btnDelete {
         cursor: pointer;
         background: none;
-        width: 10px;
-        height: 10px;
-        color: rgb(100, 0, 0);
+        display: none;
+        font-size: 18px;
+        color: #6d6c6a;
         border: none;
         position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         top: 50%;
         right: 10px;
         transform: translateY(-50%);
         transition: .5s;
         &:hover {
-          color: red;
+          color: #42336a;
         }
       }
     }
