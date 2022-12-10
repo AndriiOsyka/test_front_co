@@ -4,31 +4,31 @@ export default createStore({
   state: {
     cityes: [{
       name: "Kiyv",
-      longitude: 30.52,
-      latitude: 50.45,
+      longitude: 30.5,
+      latitude: 50.4375,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Africa%2FCairo"
     },
     {
       name: "London",
-      longitude: 51.51,
-      latitude: -0.13,
+      longitude: 51.5,
+      latitude: -0.125,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Europe%2FLondon"
     },
     {
       name: "Madrid",
-      longitude: 40.42,
-      latitude: -3.70,
+      longitude: 40.375,
+      latitude: -3.75,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Europe%2FBerlin",
     },
     {
       name: "New York",
-      longitude: -5.28,
+      longitude: -5.25,
       latitude: 56.25,
       minTemp: undefined,
       maxTemp: undefined,
@@ -50,13 +50,14 @@ export default createStore({
         }
       })
     },
+    DELETE_CITY: (state, name) => {
+      state.cityes.splice(state.cityes.findIndex(city => city.name === name), 1);
+    }
   },
   actions: {
     // eslint-disable-next-line
     async getWeatherByCity ({dispatch}, {city}) {
-      console.log(city.latitude)
       const weather = await((await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&daily=temperature_2m_max,temperature_2m_min&timezone=${city.timezone}&start_date=${this.state.date.start}&end_date=${this.state.date.end}`)).json());
-      console.log(weather);
       return weather
     },
     async getDataFromApi ({ dispatch, commit }) {
