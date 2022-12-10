@@ -23,8 +23,10 @@
   box-sizing: border-box;
   display: flex;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 </style>

@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss" scoped>
   .homeView {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
   }

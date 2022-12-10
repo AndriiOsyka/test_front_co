@@ -55,22 +55,22 @@ export default {
       },
       sortUpTemperatureMin () {
         this.cityes.sort(function (a, b) {
-          return Number(b.tempMin) > Number(a.tempMin);
+          return b.minTemp > a.minTemp;
       })
       },
       sortUpTemperatureMax () {
         this.cityes.sort(function (a, b) {
-          return Number(b.tempMax) > Number(a.tempMax);
+          return b.maxTemp > a.maxTemp;
       })
       },
       sortDownTemperatureMax () {
         this.cityes.sort(function (a, b) {
-          return Number(a.tempMax) > Number(b.tempMax);
+          return a.maxTemp > b.maxTemp;
       })
       },
       sortDownTemperatureMin () {
         this.cityes.sort(function (a, b) {
-          return Number(a.tempMin) > Number(b.tempMin);
+          return a.minTemp > b.minTemp;
       })
       }
   },
