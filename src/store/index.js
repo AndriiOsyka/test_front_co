@@ -4,8 +4,8 @@ export default createStore({
   state: {
     cityes: [{
       name: "Kiyv",
-      longitude: 50.4375,
-      latitude: 30.5,
+      longitude: 30.5,
+      latitude: 50.4375,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Africa%2FCairo"
