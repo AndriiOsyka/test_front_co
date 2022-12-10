@@ -4,24 +4,24 @@ export default createStore({
   state: {
     cityes: [{
       name: "Kiyv",
-      longitude: 30.5,
-      latitude: 50.4375,
+      longitude: 50.4375,
+      latitude: 30.5,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Africa%2FCairo"
     },
     {
       name: "London",
-      longitude: 51.5,
-      latitude: -0.125,
+      longitude: -0.125,
+      latitude: 51.5,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Europe%2FLondon"
     },
     {
       name: "Madrid",
-      longitude: 40.375,
-      latitude: -3.75,
+      longitude: -3.75,
+      latitude: 40.375,
       minTemp: undefined,
       maxTemp: undefined,
       timezone: "Europe%2FBerlin",
@@ -44,7 +44,7 @@ export default createStore({
   mutations: {
     SET_CITYES: (state, data) => {
       state.cityes.map(city => {
-        if(city.latitude === data.latitude && city.longitude === data.longitude) {
+        if(Math.floor(city.latitude) === Math.floor(data.latitude) && Math.floor(city.longitude) === Math.floor(data.longitude)) {
           city.minTemp = data.daily.temperature_2m_min[0];
           city.maxTemp = data.daily.temperature_2m_max[0];
         }

@@ -54,24 +54,16 @@ export default {
       })
       },
       sortUpTemperatureMin () {
-        this.cityes.sort(function (a, b) {
-          return b.minTemp > a.minTemp;
-      })
+        this.cityes.sort((a, b) => b.minTemp - a.minTemp)
       },
       sortUpTemperatureMax () {
-        this.cityes.sort(function (a, b) {
-          return b.maxTemp > a.maxTemp;
-      })
+        this.cityes.sort((a, b) => b.maxTemp - a.maxTemp)
       },
       sortDownTemperatureMax () {
-        this.cityes.sort(function (a, b) {
-          return a.maxTemp > b.maxTemp;
-      })
+        this.cityes.sort((a, b) => a.maxTemp - b.maxTemp)
       },
       sortDownTemperatureMin () {
-        this.cityes.sort(function (a, b) {
-          return a.minTemp > b.minTemp;
-      })
+        this.cityes.sort((a, b) => a.minTemp - b.minTemp)
       }
   },
   computed: {
