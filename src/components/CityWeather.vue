@@ -34,28 +34,25 @@
   
   <style lang="scss" scoped>
     .cityWeather {
-      border: solid 1px rgb(0, 89, 255);
       display: flex;
       position: relative;
       h4 {
         width: 20%;
-        border-right: 1px solid red;
-        border-left: 1px solid red;
         margin: 0;
         padding: 20px 0;
       }
       h5 {
         width: 40%;
-        border-right: 1px solid red;
-        border-left: 1px solid red;
+        border-left: 2px solid red;
         margin: 0;
         padding: 20px 0;
       }
       .btnDelete {
         cursor: pointer;
+        background: none;
         width: 10px;
         height: 10px;
-        color: #000;
+        color: rgb(100, 0, 0);
         border: none;
         position: absolute;
         display: flex;

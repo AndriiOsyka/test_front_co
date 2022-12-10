@@ -87,16 +87,15 @@ export default {
 
 <style lang="scss" scoped>
   .home {
+    background: #2c3e50;
     .weather {
     width: 80vw;
-    border: solid 1px #000;
+    border: solid 1px #19242e;
     .header {
       width: 100%;
       display: flex;
       .col, .colCity {
         position: relative;
-        border-left: 1px solid red;
-        border-right: 1px solid red;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -113,7 +112,7 @@ export default {
           flex-direction: column;
           .btnSortUp, .btnSortDown {
             border: none;
-            color: #000;
+            color: #fff;
             transition: .3s;
             background: none;
             &:hover {
@@ -127,6 +126,7 @@ export default {
       }
       .col {
         width: 40%;
+        border-left: 2px solid red;
       }
     }
   }
