@@ -3,7 +3,7 @@
       <h4>{{city.name}}</h4>
       <h5>{{city.minTemp}}</h5>
       <h5>{{city.maxTemp}}</h5>
-      <button @click="deleteCity" class="btnDelete">x</button>
+      <button @click="deleteCity" class="btnDelete"><font-awesome-icon icon="fa-solid fa-trash" /></button>
     </div>
   </template>
   
@@ -52,17 +52,22 @@
         padding: 20px 0;
       }
       .btnDelete {
+        cursor: pointer;
         width: 10px;
         height: 10px;
-        background: #000;
-        color: red;
+        color: #000;
+        border: none;
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
         top: 50%;
-        left: 100%;
+        right: 10px;
         transform: translateY(-50%);
+        transition: .5s;
+        &:hover {
+          color: red;
+        }
       }
     }
   </style>

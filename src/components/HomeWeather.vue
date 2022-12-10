@@ -6,22 +6,22 @@
         <div class="colCity">
           <h3>City</h3>
           <div class="btnSort">
-            <button class="btnSortUp" @click.stop="sortUpCityes">up</button>
-            <button class="btnSortDown" @click.stop="sortDownCityes">down</button>
+            <button class="btnSortUp" @click.stop="sortUpCityes"><font-awesome-icon icon="fa-solid fa-arrow-up" /></button>
+            <button class="btnSortDown" @click.stop="sortDownCityes"><font-awesome-icon icon="fa-solid fa-arrow-down" /></button>
           </div>
         </div>
         <div class="col">
           <h4>Minimal temperature</h4>
           <div class="btnSort">
-            <button class="btnSortUp" @click.stop="sortUpTemperatureMin">up</button>
-            <button class="btnSortDown" @click.stop="sortDownTemperatureMin">down</button>
+            <button class="btnSortUp" @click.stop="sortUpTemperatureMin"><font-awesome-icon icon="fa-solid fa-arrow-up" /></button>
+            <button class="btnSortDown" @click.stop="sortDownTemperatureMin"><font-awesome-icon icon="fa-solid fa-arrow-down" /></button>
           </div>
         </div>
         <div class="col">
           <h4>Maximal temperature</h4>
           <div class="btnSort">
-            <button class="btnSortUp" @click.stop="sortUpTemperatureMax">up</button>
-            <button class="btnSortDown" @click.stop="sortDownTemperatureMax">down</button>
+            <button class="btnSortUp" @click.stop="sortUpTemperatureMax"><font-awesome-icon icon="fa-solid fa-arrow-up" /></button>
+            <button class="btnSortDown" @click.stop="sortDownTemperatureMax"><font-awesome-icon icon="fa-solid fa-arrow-down" /></button>
           </div>
         </div>
       </div>
@@ -102,6 +102,8 @@ export default {
         align-items: center;
         .btnSort {
           position: absolute;
+          border: 1px solid rgb(77, 77, 77);
+          border-radius: 50%;
           top: 50%;
           right: 10px;
           transform: translateY(-50%);
@@ -109,6 +111,15 @@ export default {
           justify-content: center;
           align-items: center;
           flex-direction: column;
+          .btnSortUp, .btnSortDown {
+            border: none;
+            color: #000;
+            transition: .3s;
+            background: none;
+            &:hover {
+              color: red;
+            }
+          }
         }
       }
       .colCity {
