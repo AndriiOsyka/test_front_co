@@ -41,11 +41,15 @@
         width: 20%;
         border-right: 1px solid red;
         border-left: 1px solid red;
+        margin: 0;
+        padding: 20px 0;
       }
       h5 {
         width: 40%;
         border-right: 1px solid red;
         border-left: 1px solid red;
+        margin: 0;
+        padding: 20px 0;
       }
       .btnDelete {
         width: 10px;

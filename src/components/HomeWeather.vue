@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div>Weather</div>
+    <h1>Weather</h1>
     <div class="weather">
       <div class="header">
         <div class="colCity">
@@ -48,29 +48,29 @@ export default {
           return ('' + b.name).localeCompare(a.name);
       })
       },
+      sortDownCityes () {
+        this.cityes.sort(function (a, b) {
+          return ('' + a.name).localeCompare(b.name);
+      })
+      },
       sortUpTemperatureMin () {
         this.cityes.sort(function (a, b) {
-          return b.tempMin > a.tempMin;
+          return Number(b.tempMin) > Number(a.tempMin);
       })
       },
       sortUpTemperatureMax () {
         this.cityes.sort(function (a, b) {
-          return b.tempMax > a.tempMax;
+          return Number(b.tempMax) > Number(a.tempMax);
       })
-      },
-      sortDownCityes () {
-        this.cityes.sort(function (a, b) {
-          return a.tempMax > b.tempMax;
-        })
       },
       sortDownTemperatureMax () {
         this.cityes.sort(function (a, b) {
-          return b.tempMax > a.tempMax;
+          return Number(a.tempMax) > Number(b.tempMax);
       })
       },
       sortDownTemperatureMin () {
         this.cityes.sort(function (a, b) {
-          return b.tempMin > a.tempMin;
+          return Number(a.tempMin) > Number(b.tempMin);
       })
       }
   },
@@ -88,7 +88,7 @@ export default {
 <style lang="scss" scoped>
   .home {
     .weather {
-    width: 80%;
+    width: 80vw;
     border: solid 1px #000;
     .header {
       width: 100%;
